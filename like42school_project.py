@@ -22,13 +22,35 @@ class Stack:
     def is_empty(self):
         return not self.stack
 
+    #По хорошему лучше реализовать все операции (swap, push, rotate) как методы класса Stack.
+    #Сейчас у тебя эти операции определены отдельно от стека и используют глобальные переменные
+
+    
+    def swap(self):#TODO
+        pass
+
+    def rotate(self):#TODO
+        pass
+
+    def reverse_rotate(self):
+        pass
+
+    def pop(self):#TODO
+        pass
+        #возвращает первый элемент стека
+    
+    def push(self, x):#TODO
+        pass
+        #кладет принимает элемент x в стек
+
+
 
 stack_a = Stack()
 stack_b = Stack()
 
     
 def sa(print_op=True): #Меняет местами первый и второй элемент a стека
-    if len(stack_a.stack) in (0, 1):
+    if len(stack_a.stack) in (0, 1): #использовать глобальные переменные - плохая практика, так лучше не делать.
         return
     first = stack_a.pop()
     second = stack_a.pop()
@@ -98,9 +120,12 @@ def rb(print_op=True): #Каждый элемент stack_b на один инд
 def rr(): #Каждый элемент stack_a и stack_b на один индекс меньше
     ra(print_op=False), rb(print_op=False)
     print("rr")    
-                    
 
 
+
+#СЕЙЧАС КОД ПОВТОРЯЕТСЯ И ЭТО ПЛОХО (одна и та же реализация дублируется rra, rrb)
+# (Погугли про принцип DRY в программировании)
+# Лучше реализовать в виде методов один раз и переиспользовать
 def rra(print_op=True): #Каждый элемент stack_a на один индекс больше
     if len(stack_a.stack) > 1:
         tmp_arr = []
