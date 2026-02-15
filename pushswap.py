@@ -13,15 +13,14 @@ array = args.numbers
 
 unsorted = validator(array) #Просто получение и валидация данных
 
-if all(unsorted[i] >= unsorted[i+1] for i in range(len(unsorted) - 1)): #Проверка на отсортированность
+if all(unsorted[i] <= unsorted[i+1] for i in range(len(unsorted) - 1)): #Проверка на отсортированность
     exit()
 
 if len(unsorted) <= 5:          #Ветвление, которое определит какой алгоритм сортировки брать
     stack_a = Stack("a")
     stack_b = Stack("b")
-    stack_a.stack = unsorted
+    stack_a.stack = list(reversed(unsorted))
     small_sort(stack_a, stack_b)
-    print(stack_a.stack)
     exit()
 
 else:

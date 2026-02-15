@@ -12,9 +12,9 @@ def big_sort(nums: list):
     for x in sorted_stack:
         index[x] = sorted_stack.index(x)
     
-    stack_a.stack = [index[x] for x in nums]
+    stack_a.stack = list(reversed([index[x] for x in nums]))
     
-    n = 15 if len(stack_a.stack) <= 100 else 30
+    n = 15 if len(stack_a.stack) <= 100 else 30 
     counter = 0 #Это первая часть, она перекидывает элементы из а в б таким образом, что они становятся бабочкой
     while not stack_a.is_empty():
         if stack_a.peek() <= counter:
@@ -30,13 +30,12 @@ def big_sort(nums: list):
             
     #После 1 части стек б готов к тому чтобы мы его перекинули
     while not stack_b.is_empty():
-        minimum= min(stack_b.stack)
-        minimum_index = stack_b.stack.index(minimum)
-        if len(stack_b.stack) // 2 > minimum_index:
-            while stack_b.peek() != minimum:
+        maximum = max(stack_b.stack)
+        maximum_index = stack_b.stack.index(maximum)
+        if len(stack_b.stack) // 2 > maximum_index:
+            while stack_b.peek() != maximum:
                 stack_b.reverse_rotate()
         else:
-            while stack_b.peek() != minimum:
+            while stack_b.peek() != maximum:
                 stack_b.rotate()
-        stack_b.push_to(stack_a)  
-    print(stack_a.stack)      
+        stack_b.push_to(stack_a)       
