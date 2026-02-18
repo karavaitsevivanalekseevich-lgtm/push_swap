@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import argparse
 from stack import Stack
 from small_sort import small_sort, quick_sort
